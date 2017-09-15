@@ -2,11 +2,17 @@ AppDaemon:
   logfile: STDOUT
   errorfile: STDERR
   threads: 10
+  logsize: 100000
+  log_generations: 3
+#  app_dir: /conf/apps
+  cert_verify: False
+  disable_apps: 0 
+  
 HASS:
   ha_url: http://hass:8123
-  ha_key:
-# Apps
-hello_world:
-  module: hello
-  class: HelloWorld
 
+HADashboard:
+  dash_url: http://0.0.0.0:5050
+  dash_dir: /conf/dashboard
+  dash_force_compile: 1 
+  dash_compile_on_start: 1
