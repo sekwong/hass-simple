@@ -1,0 +1,17 @@
+version: '3'
+services:
+  hass:
+    image: homeassistant/home-assistant
+    environment:
+      TZ: Asia/Bangkok
+    volumes:
+      - ./config-hass:/config
+    ports:
+      - "8123:8123"
+    restart: always
+  appdaemon:
+    image: appdaemon
+    depends_on: 
+      - hass
+    volumes:
+      - ./config-appdaemon:/conf
