@@ -3,8 +3,6 @@
 .DS_Store
 ._*
 .uuid
-config-appdaemon/compiled/js/*
-config-appdaemon/compiled/html/*
+config-appdaemon/compiled/**/*
+!config-appdaemon/compiled/**/.keep
 *.pyc
-config-appdaemon/compiled/css/*
-config-appdaemon/compiled/javascript/*
