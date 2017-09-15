@@ -10,8 +10,10 @@ services:
       - "8123:8123"
     restart: always
   appdaemon:
-    image: appdaemon
+    image: acockburn/appdaemon:latest
     depends_on: 
       - hass
     volumes:
       - ./config-appdaemon:/conf
+    ports:
+      - "5050:5050"

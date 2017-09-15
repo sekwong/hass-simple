@@ -6,3 +6,4 @@
 config-appdaemon/compiled/**/*
 !config-appdaemon/compiled/**/.keep
 *.pyc
+.HA_VERSION
