@@ -1,0 +1,41 @@
+#
+# Main arguments, all optional
+#
+title: Test Bed Panel
+widget_dimensions: [120, 120]
+widget_margins: [5, 5]
+columns: 8
+
+label:
+    widget_type: label
+    text: Test Bed
+
+left_lamp:
+    widget_type: switch
+    title: Left Lamp
+    icon_on: fa-toggle-on
+    icon_off: fa-toggle-off
+    entity: light.left_lamp
+ 
+center_lamp:
+    widget_type: switch
+    title: Center Lamp
+    icon_on: fa-toggle-on
+    icon_off: fa-toggle-off
+    entity: switch.center_lamp
+
+right_lamp:
+    widget_type: switch
+    title: Right Lamp
+    icon_on: fa-toggle-on
+    icon_off: fa-toggle-off
+    entity: switch.right_lamp
+
+reload:
+    widget_type: reload
+    title: reload
+
+
+layout:
+    - label(2x2), left_lamp(2x1), center_lamp(2x1), right_lamp(2x1)
+    - reload(2x1)

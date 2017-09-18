@@ -73,17 +73,6 @@ light left_lamp:
     retain: true
     optimistic: false
 
-light right_lamp:
-  - platform: mqtt
-    name: "Right Lamp"
-    state_topic: "tzswitch2/relay/state"
-    command_topic: "tzswitch2/gpio/12"
-    qos: 0
-    payload_on: 1
-    payload_off: 0
-    retain: true
-    optimistic: false
-
 switch center_lamp:
   - platform: mqtt
     name: "Center Lamp"
@@ -95,7 +84,16 @@ switch center_lamp:
     retain: true
     optimistic: false
 
-# Text to speech
+switch broad_link:
+  - platform: broadlink
+    host: 172.16.3.136
+    mac: "34:ea:34:c7:ba:01"
+    switches:
+      right_lamp:
+        friendly_name: "Right Lamp"
+        command_on: "6RRGAN8JFgkJFhYJCRYJFgkWCRYWCQkWCRYWCRYJFgkJFhYJFgkWCRYJCRYJFgkWFgkWCRYJCRYJFhYJCRYJFgkWFgkJFgkAAUg="
+        command_off: "6RRGAN8JFgkJFhYJFgkWCRYJCRYWCRYJCRYJFhYJCRYJFgkWFgkJFgkWFgkWCRYJFgkJFgkWCRYWCQkWCRYJFgkWCRYWCQkAAUg="
+
 tts:
   - platform: google
 
