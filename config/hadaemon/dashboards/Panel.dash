@@ -1,0 +1,60 @@
+#
+# Main arguments, all optional
+#
+title: Test Bed Panel
+widget_dimensions: [120, 120]
+widget_margins: [5, 5]
+columns: 8
+img_list: 
+    - https://icons.wxug.com/data/weather-maps/radar/united-states/hartford-connecticut-region-current-radar-animation.gif
+
+
+
+label:
+    widget_type: label
+    text: Test Bed
+
+left_lamp:
+    widget_type: switch
+    title: Left Lamp
+    icon_on: fa-toggle-on
+    icon_off: fa-toggle-off
+    entity: light.left_lamp
+ 
+center_lamp:
+    widget_type: switch
+    title: Center Lamp
+    icon_on: fa-toggle-on
+    icon_off: fa-toggle-off
+    entity: switch.center_lamp
+
+right_lamp:
+    widget_type: switch
+    title: Right Lamp
+    icon_on: fa-toggle-on
+    icon_off: fa-toggle-off
+    entity: switch.right_lamp
+
+reload:
+    widget_type: reload
+    title: reload
+
+clock:
+    widget_type: clock
+
+cat_frame:
+    widget_type: iframe
+    title: Pics
+    refresh: 60
+    img_list: 
+      - http://www.uniwallpaper.com/static/images/a5f4051f4c019e159ff523754f5d569b_5ZMy2F9.jpg
+      - http://www.uniwallpaper.com/static/images/4640301_Zc4ESGi.jpg
+      - http://www.uniwallpaper.com/static/images/6890733-mountain-peaks-wallpaper-hd_PZTQDff.jpg
+      - http://www.uniwallpaper.com/static/images/above-adventure-aerial-air_T84QbL0.jpg
+      - http://www.uniwallpaper.com/static/images/Lioness-Howl-Close-Up-4K-Wallpaper_Jrn63eg.jpg
+
+
+layout:
+    - clock(2x1)
+    - label(2x1), left_lamp(2x1), center_lamp(2x1), right_lamp(2x1)
+    - reload(2x1), cat_frame(2x1)
