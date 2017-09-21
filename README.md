@@ -37,10 +37,13 @@ $ docker-compose restart
 ```
 $ ping hassio.local
 ```
-- After setup finish go to  http://hassio.local:8123 and install SSH add-on
+- Update hadaemon/appdaemon.yaml with new hassio ip to HASS:ha_url and HADashboard:dash_url
+- After setup finish go to home assistant admin at  http://hassio-ip-address:8123 and install SSH add-on
 - install appdeamon addon from https://github.com/vkorn/hassio-addons
-- update authorized_keys or password
+- update authorized_keys or password to ssh addon
+- update app daemon network port from 3030 to 80
 - upload home assistant config by scp:
 ```
-$ scp -r ./config-hass root@hassio.local:/config
+$ scp -r ./config root@hassio.local:/config
 ```
+- restart home assistant
