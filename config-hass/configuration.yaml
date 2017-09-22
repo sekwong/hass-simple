@@ -94,6 +94,48 @@ switch broad_link:
         command_on: "6RRGAN8JFgkJFhYJCRYJFgkWCRYWCQkWCRYWCRYJFgkJFhYJFgkWCRYJCRYJFgkWFgkWCRYJCRYJFhYJCRYJFgkWFgkJFgkAAUg="
         command_off: "6RRGAN8JFgkJFhYJFgkWCRYJCRYWCRYJCRYJFhYJCRYJFgkWFgkJFgkWFgkWCRYJFgkJFgkWCRYWCQkWCRYJFgkWCRYWCQkAAUg="
 
+
+binary_sensor door_sensor:
+  - platform: mqtt
+    state_topic: "door_sensor/read_switch/state"
+    name: "Door Sensor"
+    payload_on: "1"
+    payload_off: "0"
+    devices_class: opening
+
+binary_sensor motion_detect:
+  - platform: mqtt
+    state_topic: "PIR_Sensor/read_switch/state"
+    name: "Motion Detect"
+    payload_on: "1"
+    payload_off: "0"
+    devices_class: motion
+
+sensor office_tmp:
+   - platform: broadlink
+     host: 172.16.3.136
+     mac: "34:ea:34:c7:ba:01"
+     name: "Office"
+     monitored_conditions:
+      - temperature
+
+sensor wather_station:
+  - platform: darksky
+    api_key: 35baceba34e47cd03787836a06ffd761
+    monitored_conditions:
+      - summary
+      - icon
+      - temperature
+      - cloud_cover
+      - humidity
+      - pressure
+      - apparent_temperature
+      - wind_speed
+      - ozone
+      - nearest_storm_distance
+      - precip_intensity
+      - precip_probability
+
 tts:
   - platform: google
 

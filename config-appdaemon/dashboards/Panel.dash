@@ -2,50 +2,54 @@
 # Main arguments, all optional
 #
 title: Test Bed Panel
-widget_dimensions: [120, 120]
+widget_dimensions: [128, 128]
 widget_margins: [5, 5]
-columns: 8
+columns: 12
+skin: dark_flower
 img_list: 
     - https://icons.wxug.com/data/weather-maps/radar/united-states/hartford-connecticut-region-current-radar-animation.gif
 
 
 
-label:
-    widget_type: label
-    text: Test Bed
+logo_frame:
+    widget_type: iframe
+    img_list:
+        - https://storage.googleapis.com/rkgroup/rk_logo.png
 
 left_lamp:
     widget_type: switch
-    title: Left Lamp
-    icon_on: fa-toggle-on
-    icon_off: fa-toggle-off
+    title: ไฟด้านซ้าย
+    icon_on: fa-lightbulb-o
+    icon_off: fa-lightbulb-o
     entity: light.left_lamp
  
 center_lamp:
     widget_type: switch
-    title: Center Lamp
-    icon_on: fa-toggle-on
-    icon_off: fa-toggle-off
+    title: ไฟตรงกลาง
+    icon_on: fa-lightbulb-o
+    icon_off: fa-lightbulb-o
     entity: switch.center_lamp
 
 right_lamp:
     widget_type: switch
-    title: Right Lamp
-    icon_on: fa-toggle-on
-    icon_off: fa-toggle-off
+    title: ไฟด้านขวา
+    icon_on: fa-lightbulb-o
+    icon_off: fa-lightbulb-o
     entity: switch.right_lamp
 
 reload:
     widget_type: reload
-    title: reload
+    title: รีเฟรส
 
 clock:
     widget_type: clock
+    show_seconds: 1
+    time_style: "color: #FFF"
 
 cat_frame:
     widget_type: iframe
-    title: Pics
-    refresh: 60
+    title: รูปภาพ
+    refresh: 2
     img_list: 
       - http://www.uniwallpaper.com/static/images/a5f4051f4c019e159ff523754f5d569b_5ZMy2F9.jpg
       - http://www.uniwallpaper.com/static/images/4640301_Zc4ESGi.jpg
@@ -53,8 +57,34 @@ cat_frame:
       - http://www.uniwallpaper.com/static/images/above-adventure-aerial-air_T84QbL0.jpg
       - http://www.uniwallpaper.com/static/images/Lioness-Howl-Close-Up-4K-Wallpaper_Jrn63eg.jpg
 
+sun:
+    widget_type: sensor
+    entity: sun.sun
+    title: แสง
+    state_map:
+        "above_horizon": "<img src='https://www.amcharts.com/wp-content/themes/amcharts2/css/img/icons/weather/animated/day.svg'/>"
+        "below_horizon": "<img src='https://www.amcharts.com/wp-content/themes/amcharts2/css/img/icons/weather/animated/night.svg'/>"
 
+office_temp:
+    widget_type: sensor
+    entity: sensor.office_temperature
+    title: ห้องออฟฟิต
+    units: "&deg;C"
+    value_style: "color: #FFF"
+    unit_style: "color: #FFF"
+
+weather:
+    widget_type: weather
+    units: "&deg;C"
+
+door_sensor:
+   widget_type: sensor
+   title: ประตูออฟฟิต
+   entity: binary_sensor.door_sensor
+   state_map:
+    "on": "เปิด"
+    "off": "ปิด"
+    
 layout:
-    - clock(2x1)
-    - label(2x1), left_lamp(2x1), center_lamp(2x1), right_lamp(2x1)
-    - reload(2x1), cat_frame(2x1)
+    - logo_frame(3x2), weather(2x2), clock(2x1), office_temp(1x1), reload(1x1)
+    - left_lamp(1x1), center_lamp(1x1), right_lamp(1x1), door_sensor(1x1)
