@@ -1,0 +1,26 @@
+- action:
+  - alias: Center light on
+    data:
+      entity_id: switch.center_lamp
+    service: switch.turn_on
+  alias: Motion center lamp on
+  condition: []
+  id: '1505969373879'
+  trigger:
+  - entity_id: binary_sensor.motion_detect
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - alias: Motion center lamp off
+    data:
+      entity_id: switch.center_lamp
+    service: switch.turn_off
+  alias: Motion center light off
+  condition: []
+  id: '1505969551479'
+  trigger:
+  - entity_id: binary_sensor.motion_detect
+    from: 'on'
+    platform: state
+    to: 'off'

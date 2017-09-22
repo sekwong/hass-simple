@@ -9,9 +9,10 @@ AppDaemon:
   disable_apps: 0 
   
 HASS:
-  ha_url: http://hass:8123
-
+  # change to hassio's ip address in production
+  ha_url: http://hass:8123 
 HADashboard:
+  # change to hassio's ip address without port in production
   dash_url: http://0.0.0.0:5050
   dash_dir: /conf/dashboards
   dash_force_compile: 1 

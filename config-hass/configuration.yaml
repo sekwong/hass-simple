@@ -1,18 +1,20 @@
 homeassistant:
   # Name of the location where Home Assistant is running
-  name: Teamzoon
+  name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: 18.79970
-  longitude: 99.02326
+  latitude: 13.75
+  longitude: 100.4667
   # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 310
+  elevation: 10
   # metric for Metric, imperial for Imperial
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Asia/Bangkok
+  # Customization file
+  customize: !include customize.yaml
 
 # Show links to resources in log and frontend
-#introduction:
+introduction:
 
 # Enables the frontend
 frontend:
@@ -21,12 +23,10 @@ frontend:
 config:
 
 http:
-  server_port: 8123
   # Uncomment this to add a password (recommended!)
   # api_password: PASSWORD
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
-
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -56,87 +56,10 @@ sun:
 sensor:
   - platform: yr
 
-# MQTT
-mqtt:
-  broker: 139.59.120.107
-  port : 1883
-  client_id: "tz-home-assistant-2"
-
-light left_lamp:
-  - platform: mqtt
-    name: "Left Lamp"
-    state_topic: "tzswitch1/relay/state"
-    command_topic: "tzswitch1/gpio/12"
-    qos: 0
-    payload_on: 1
-    payload_off: 0
-    retain: true
-    optimistic: false
-
-switch center_lamp:
-  - platform: mqtt
-    name: "Center Lamp"
-    state_topic: "tzwifiswitch2/relay/state"
-    command_topic: "tzwifiswitch2/gpio/12"
-    qos: 0
-    payload_on: 1
-    payload_off: 0
-    retain: true
-    optimistic: false
-
-switch broad_link:
-  - platform: broadlink
-    host: 172.16.3.136
-    mac: "34:ea:34:c7:ba:01"
-    switches:
-      right_lamp:
-        friendly_name: "Right Lamp"
-        command_on: "6RRGAN8JFgkJFhYJCRYJFgkWCRYWCQkWCRYWCRYJFgkJFhYJFgkWCRYJCRYJFgkWFgkWCRYJCRYJFhYJCRYJFgkWFgkJFgkAAUg="
-        command_off: "6RRGAN8JFgkJFhYJFgkWCRYJCRYWCRYJCRYJFhYJCRYJFgkWFgkJFgkWFgkWCRYJFgkJFgkWCRYWCQkWCRYJFgkWCRYWCQkAAUg="
-
-
-binary_sensor door_sensor:
-  - platform: mqtt
-    state_topic: "door_sensor/read_switch/state"
-    name: "Door Sensor"
-    payload_on: "1"
-    payload_off: "0"
-    devices_class: opening
-
-binary_sensor motion_detect:
-  - platform: mqtt
-    state_topic: "PIR_Sensor/read_switch/state"
-    name: "Motion Detect"
-    payload_on: "1"
-    payload_off: "0"
-    devices_class: motion
-
-sensor office_tmp:
-   - platform: broadlink
-     host: 172.16.3.136
-     mac: "34:ea:34:c7:ba:01"
-     name: "Office"
-     monitored_conditions:
-      - temperature
-
-sensor wather_station:
-  - platform: darksky
-    api_key: 35baceba34e47cd03787836a06ffd761
-    monitored_conditions:
-      - summary
-      - icon
-      - temperature
-      - cloud_cover
-      - humidity
-      - pressure
-      - apparent_temperature
-      - wind_speed
-      - ozone
-      - nearest_storm_distance
-      - precip_intensity
-      - precip_probability
-
+# Text to speech
 tts:
   - platform: google
 
+group: !include groups.yaml
 automation: !include automations.yaml
+script: !include scripts.yaml
