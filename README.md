@@ -23,11 +23,11 @@ $ docker-compose restart
       Panel.dash          # ha dashboard config
 ```
 ## Home Assistant Config ##
-- Main configuration file at config-hass/configuration.yaml
+- Main configuration file at config/configuration.yaml
 - [Configuration guide ](https://home-assistant.io/docs/configuration/)
 - For production please add http:api_password
 ## Dashboard Config ##
-- Main configuration file at config-appdaemon/appdaemon.yaml 
+- Main configuration file at config/hadaemon/appdaemon.yaml 
 - [Configuration guide ](hhttp://appdaemon.readthedocs.io/en/latest/INSTALL.html#configuratio)
 - For acccess hass.io in Raspberry Pi 3 change docker-compose.yml HASS:ha_url to http://hassio.local:8123
 
@@ -39,11 +39,12 @@ $ ping hassio.local
 ```
 - Update hadaemon/appdaemon.yaml with new hassio ip to HASS:ha_url and HADashboard:dash_url
 - After setup finish go to home assistant admin at  http://hassio-ip-address:8123 and install SSH add-on
-- install appdeamon addon from https://github.com/vkorn/hassio-addons
-- update authorized_keys or password to ssh addon
+- update ssh add-on authorized_keys with key from ~/.ssh/id_rsa.pub
+- install appdeamon addon from https://github.com/vkorn/hassio-addons at add-on repository
 - update app daemon network port from 3030 to 80
+- update app daemon config
 - upload home assistant config by scp:
 ```
-$ scp -r ./config root@hassio.local:/config
+$ scp -r ./config root@hassio.local:/
 ```
 - restart home assistant
