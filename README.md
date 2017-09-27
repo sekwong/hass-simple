@@ -12,15 +12,15 @@ $ docker-compose restart
 
 ```
 --/
-  /config-hass/
+  /config/
     configuration.yaml     # home assistant main config
     groups.yaml            # group config
     automations.yaml
   
-  /config-appdaemon/
-    appdaemon.yaml        # appdaemon config
-    /dashboards/
-      Panel.dash          # ha dashboard config
+    /hadaemon/
+      appdaemon.yaml        # appdaemon config
+      /dashboards/
+        Panel.dash          # ha dashboard config
 ```
 ## Home Assistant Config ##
 - Main configuration file at config/configuration.yaml
